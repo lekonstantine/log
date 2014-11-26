@@ -20,7 +20,7 @@ function login() {
     }
 }
 
-$is_auth = arr_get($_GET, 'token') == sha1('твой сеерктный ключ'); // здесь проверяешь на свой секретный ключ
+$is_auth = arr_get($_GET, 'token') == sha1('твой секретный ключ'); // здесь проверяешь на свой секретный ключ
 $action = arr_get($_GET, 'action'); // здесь получаешь параметр ?action=login
 
 $functions = array('login'); // здесь ты указываешь какие функции можно передавать и вызывать в параметре ?action=login
