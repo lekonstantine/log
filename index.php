@@ -7,15 +7,11 @@ function arr_get($array, $key, $default = NULL) {
     return isset($array[$key]) ? $array[$key] : $default;
 }
 
-function mysql_connect() {
-    $connect = mysql_connect("localhost", "username", "password"); // здесь заменяешь username и password на свои
-    mysql_select_db("login", $connect); // здесь вказываешь название базы данных
-}
-
 function login() {
     $user_id = (int)arr_get($_GET, 'id', 0); // получаем параметр ?id=12345, если такого параметра нет то выставится 0
     if ($user_id) { // проверяем пришел ли параметр ?id=12345
-        mysql_connect(); // Подключаемся к серверу MySQL и указываем базу данных
+        $connect = mysql_connect("localhost", "username", "password"); // здесь заменяешь username и password на свои
+        mysql_select_db("login", $connect); // здесь вказываешь название базы данных
         mysql_query("INSERT INTO login (user_id) VALUES ('$user_id')");
     }
 }
