@@ -8,15 +8,15 @@ function arr_get($array, $key, $default = NULL) {
 }
 
 function mysql_connect() {
-    $conntect = mysql_connect("localhost", "username", "password"); // здесь заменяешь username и password на свои
-    mysql_select_db("database", $conntect); // здесь вказываешь название базы данных
+    $connect = mysql_connect("localhost", "username", "password"); // здесь заменяешь username и password на свои
+    mysql_select_db("login", $connect); // здесь вказываешь название базы данных
 }
 
 function login() {
-    $id = (int)arr_get($_GET, 'id', 0); // получаем параметр ?id=12345, если такого параметра нет то выставится 0
-    if ($id) { // проверяем пришел ли параметр ?id=12345
+    $user_id = (int)arr_get($_GET, 'id', 0); // получаем параметр ?id=12345, если такого параметра нет то выставится 0
+    if ($user_id) { // проверяем пришел ли параметр ?id=12345
         mysql_connect(); // Подключаемся к серверу MySQL и указываем базу данных
-        mysql_query("INSERT INTO table (field1, field2, field3) VALUES ('value1', 'value2', 'value3')");
+        mysql_query("INSERT INTO login (user_id) VALUES ('$user_id')");
     }
 }
 
